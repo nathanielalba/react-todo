@@ -1,4 +1,5 @@
 var React = require('react');
+var uuid = require('node-uuid');
 
 var TodoList = require('TodoList');
 var AddTodo = require('AddTodo');
@@ -11,28 +12,38 @@ var TodoApp = React.createClass({
       searchText: '',
       todos: [
         {
-          id: 1,
+          id: uuid(),
           text: 'Walk the dog'
         },
         {
-          id: 2,
+          id: uuid(),
           text: 'Clean the yard'
         },
         {
-          id: 3,
+          id: uuid(),
           text: 'Fuck shit up'
         },
         {
-          id: 4,
+          id: uuid(),
           text: 'Finish these lessons'
         }
       ]
     };
   },
   handleAddTodo: function(todo) {
+    // This was my original solution without spread. spread is much cleaner
+    // this.setState({
+    //   todos: this.state.todos.concat([{id: this.state.todos.length + 1, text: todo}])
+    // });
     this.setState({
-      todos: this.state.todos.concat([{id: this.state.todos.length + 1, text: todo}])
-    });
+      todos: [
+        ...this.state.todos,
+        {
+          id: uuid(),
+          text: todo
+        }
+      ]
+    })
   },
   handleSearch: function(showCompleted, searchText) {
     this.setState({
