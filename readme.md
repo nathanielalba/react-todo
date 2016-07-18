@@ -1,1 +1,1 @@
-A basic React boilerplate with Hash routing.
+A basic React todo
