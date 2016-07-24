@@ -1,13 +1,13 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var { Provider } = require('react-redux');
+var TestUtils = require('react-addons-test-utils');
 var expect = require('expect');
 var $ = require('jquery');
-var TestUtils = require('react-addons-test-utils');
 
 import { configure } from 'configureStore';
 import ConnectedTodoList, { TodoList } from 'TodoList';
-import ConnectedTodo, { Todo } from 'Todo';
+import ConnectedTodo, { Todo } from 'Todo'
 
 describe('TodoList', () => {
   it('should exist', () => {
@@ -21,15 +21,13 @@ describe('TodoList', () => {
       completed: false,
       completedAt: undefined,
       createdAt: 500
-    },
-    {
+    }, {
       id: 2,
-      text: 'Hello there',
+      text: 'Check mail',
       completed: false,
       completedAt: undefined,
       createdAt: 500
     }];
-
     var store = configure({
       todos: todos
     });
@@ -43,6 +41,7 @@ describe('TodoList', () => {
 
     expect(todosComponents.length).toBe(todos.length);
   });
+
 
   it('should render empty message if no todos', () => {
     var todos = [];
